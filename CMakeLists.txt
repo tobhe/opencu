@@ -40,8 +40,9 @@ add_executable(cu
 	error.c
 	input.c
 	xmodem.c
-	compat/vis.c
+	compat/closefrom.c
 	compat/strtonum.c
+	compat/vis.c
 )
 
 target_compile_options(cu PRIVATE ${CFLAGS})
