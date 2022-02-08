@@ -49,3 +49,7 @@ target_link_libraries(cu bsd event)
 target_include_directories(cu PUBLIC
 	"/usr/include"
 	"/usr/include/bsd/")
+
+install(TARGETS cu RUNTIME DESTINATION bin)
+set (CMAKE_INSTALL_MANDIR /usr/share/man)
+install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/cu.1 DESTINATION ${CMAKE_INSTALL_MANDIR}/man1/)
