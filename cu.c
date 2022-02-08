@@ -172,9 +172,9 @@ main(int argc, char **argv)
 	}
 
 	if (line_path == NULL)
-		line_path = "/dev/cua00";
+		line_path = "/dev/ttyUSB0";
 	if (line_speed == -1)
-		line_speed = 9600;
+		line_speed = 115200;
 	if (is_direct == -1)
 		is_direct = 0;
 
