@@ -18,7 +18,7 @@ project(cu)
 
 find_library(bsd NAMES bsd)
 
-add_definitions(-DLIBBSD_OVERLAY -D_GNU_SOURCE)
+add_definitions(-DLIBBSD_OVERLAY -DLIBBSD_OPENBSD_VIS -D_GNU_SOURCE)
 
 set(CFLAGS)
 list(APPEND CFLAGS
@@ -44,6 +44,7 @@ add_executable(cu
 	xmodem.c
 )
 
+target_compile_options(cu PRIVATE ${CFLAGS})
 target_link_libraries(cu bsd event)
 target_include_directories(cu PUBLIC
 	"/usr/include"

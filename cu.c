@@ -80,7 +80,11 @@ int
 main(int argc, char **argv)
 {
 	const char	*errstr;
+#if 0
 	char		*tmp, *s, *host;
+#else
+	char		*tmp, *host;
+#endif
 	int		 opt, i, flags;
 
 #if 0
