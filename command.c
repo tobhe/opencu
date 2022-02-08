@@ -73,12 +73,8 @@ pipe_command(void)
 		if (dup2(line_fd, STDOUT_FILENO) == -1)
 			_exit(1);
 
-#if 0
 		if (closefrom(STDERR_FILENO + 1) != 0)
 			_exit(1);
-#else
-		closefrom(STDERR_FILENO + 1);
-#endif
 
 		execl(_PATH_BSHELL, "sh", "-c", cmd, (char *)NULL);
 		_exit(1);
@@ -127,12 +123,8 @@ connect_command(void)
 		if (dup2(line_fd, STDIN_FILENO) == -1)
 			_exit(1);
 
-#if 0
 		if (closefrom(STDERR_FILENO + 1) != 0)
 			_exit(1);
-#else
-		closefrom(STDERR_FILENO + 1);
-#endif
 
 		execl(_PATH_BSHELL, "sh", "-c", cmd, (char *)NULL);
 		_exit(1);
