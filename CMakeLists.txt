@@ -14,9 +14,16 @@
 
 cmake_minimum_required(VERSION 3.12)
 
+include(CheckFunctionExists)
+
 project(cu)
 
 add_definitions(-D_GNU_SOURCE)
+
+check_function_exists(closefrom HAVE_CLOSEFROM)
+if(HAVE_CLOSEFROM)
+	add_definitions(-DHAVE_CLOSEFROM)
+endif()
 
 set(CFLAGS)
 list(APPEND CFLAGS

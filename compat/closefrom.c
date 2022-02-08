@@ -8,8 +8,8 @@
 #include <limits.h>
 #include "unistd.h"
 
-int
+void
 closefrom(int lowfd)
 {
-	return syscall(__NR_close_range, lowfd, INT_MAX, 0);
+	syscall(__NR_close_range, lowfd, INT_MAX, 0);
 }

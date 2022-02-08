@@ -8,6 +8,8 @@
 #ifndef CUCOMPAT_UNISTD_H
 #define CUCOMPAT_UNISTD_H
 
-int closefrom(int);
+#ifndef HAVE_CLOSEFROM
+void closefrom(int);
+#endif
 
 #endif
