@@ -1,6 +1,6 @@
-# CU(1)
+# cu(1) - serial terminal emulator
 
-This is a port of OpenBSD's cu(1) for Linux.
+This is a port of OpenBSD's serial terminal emulator cu(1) to Linux.
 
 ## Dependencies
 
