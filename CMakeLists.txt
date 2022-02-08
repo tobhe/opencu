@@ -16,8 +16,6 @@ cmake_minimum_required(VERSION 3.12)
 
 project(cu)
 
-find_library(bsd NAMES bsd)
-
 add_definitions(-D_GNU_SOURCE)
 
 set(CFLAGS)
