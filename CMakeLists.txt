@@ -18,7 +18,7 @@ project(cu)
 
 find_library(bsd NAMES bsd)
 
-add_definitions(-DLIBBSD_OVERLAY -DLIBBSD_OPENBSD_VIS -D_GNU_SOURCE)
+add_definitions(-D_GNU_SOURCE)
 
 set(CFLAGS)
 list(APPEND CFLAGS
@@ -42,13 +42,15 @@ add_executable(cu
 	error.c
 	input.c
 	xmodem.c
+	compat/vis.c
+	compat/strtonum.c
 )
 
 target_compile_options(cu PRIVATE ${CFLAGS})
-target_link_libraries(cu bsd event)
+target_link_libraries(cu event)
 target_include_directories(cu PUBLIC
-	"/usr/include"
-	"/usr/include/bsd/")
+	compat
+)
 
 install(TARGETS cu RUNTIME DESTINATION bin)
 set (CMAKE_INSTALL_MANDIR /usr/share/man)
