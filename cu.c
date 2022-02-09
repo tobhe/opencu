@@ -80,14 +80,14 @@ int
 main(int argc, char **argv)
 {
 	const char	*errstr;
-#if 0
+#ifdef __OpenBSD__
 	char		*tmp, *s, *host;
 #else
 	char		*tmp, *host;
 #endif
 	int		 opt, i, flags;
 
-#if 0
+#ifdef __OpenBSD__
 	if (pledge("stdio rpath wpath cpath getpw proc exec tty",
 	    NULL) == -1)
 		err(1, "pledge");
@@ -115,7 +115,7 @@ main(int argc, char **argv)
 		case 'd':
 			is_direct = 1;
 			break;
-#if 0
+#ifdef __OpenBSD__
 		case 'r':
 			if (pledge("stdio rpath wpath tty", NULL) == -1)
 				err(1, "pledge");
@@ -159,7 +159,7 @@ main(int argc, char **argv)
 		if (host != NULL && *host != '\0') {
 			if (*host == '/')
 				line_path = host;
-#if 0
+#ifdef __OpenBSD__
 			else {
 				s = getenv("REMOTE");
 				if (s != NULL && *s == '/')
@@ -190,7 +190,7 @@ main(int argc, char **argv)
 	line_fd = open(line_path, flags);
 	if (line_fd == -1)
 		err(1, "open(\"%s\")", line_path);
-#if 0
+#ifdef __OpenBSD__
 	if (restricted && pledge("stdio tty", NULL) == -1)
 		err(1, "pledge");
 #endif
@@ -242,7 +242,7 @@ void
 signal_event(int fd, short events, void *data)
 {
 	restore_termios();
-#if 0
+#ifdef __OpenBSD__
 	printf("\r\n[SIG%s]\n", sys_signame[fd]);
 #else
 	printf("\r\n[SIG%s]\n", strsignal(fd));
@@ -281,7 +281,7 @@ set_termios(void)
 	tio.c_cc[VMIN] = 1;
 	tio.c_cc[VTIME] = 0;
 	tio.c_cc[VDISCARD] = _POSIX_VDISABLE;
-#if 0
+#ifdef __OpenBSD__
 	tio.c_cc[VDSUSP] = _POSIX_VDISABLE;
 #endif
 	tio.c_cc[VINTR] = _POSIX_VDISABLE;
@@ -387,7 +387,7 @@ line_error(struct bufferevent *bufev, short what, void *data)
 	event_loopexit(NULL);
 }
 
-#if 0
+#ifdef __OpenBSD__
 void
 try_remote(const char *host, const char *path, const char *entry)
 {
