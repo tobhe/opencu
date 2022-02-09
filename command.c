@@ -252,13 +252,18 @@ do_command(char c)
 	case 'C':
 		connect_command();
 		break;
-#if 0
 	case 'D':
+#ifdef __OpenBSD__
 		ioctl(line_fd, TIOCCDTR, NULL);
 		sleep(1);
 		ioctl(line_fd, TIOCSDTR, NULL);
-		break;
+#else
+		const int dtrbits = TIOCM_DTR;
+		ioctl(line_fd, TIOCMBIC, &dtrbits);
+		sleep(1);
+		ioctl(line_fd, TIOCMBIS, &dtrbits);
 #endif
+		break;
 	case 'R':
 		start_record();
 		break;
