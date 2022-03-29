@@ -252,7 +252,7 @@ do_command(char c)
 	case 'C':
 		connect_command();
 		break;
-	case 'D':
+	case 'D': {
 #ifdef __OpenBSD__
 		ioctl(line_fd, TIOCCDTR, NULL);
 		sleep(1);
@@ -264,6 +264,7 @@ do_command(char c)
 		ioctl(line_fd, TIOCMBIS, &dtrbits);
 #endif
 		break;
+	}
 	case 'R':
 		start_record();
 		break;
