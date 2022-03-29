@@ -1,0 +1,3 @@
+version=4
+opts=filenamemangle=s/.+\/v?(\d\S*)\.tar\.gz/opencu-$1\.tar\.gz/ \
+  https://github.com/tobhe/opencu/releases .*\/v?(\d\S*)\.tar\.gz

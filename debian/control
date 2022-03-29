@@ -1,0 +1,20 @@
+Source: opencu
+Section: misc
+Priority: optional
+Maintainer: Tobias Heider <me@tobhe.de>
+Build-Depends: cmake, debhelper-compat (= 12), libevent-dev
+Standards-Version: 4.5.0
+Homepage: https://github.com/tobhe/opencu
+Vcs-Browser: https://salsa.debian.org/debian/cu
+Vcs-Git: https://salsa.debian.org/debian/cu.git -b debian/unstable
+
+Package: opencu
+Architecture: any
+Multi-Arch: foreign
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: Serial terminal emulator ported from OpenBSD's cu(1).
+ cu is used to connect to another system over a serial link.  In the era
+ before modern networks, it was typically used to connect to a modem in
+ order to dial in to a remote host.  It is now frequently used for tasks
+ such as attaching to the serial console of another machine for
+ administrative or debugging purposes.
