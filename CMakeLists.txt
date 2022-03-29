@@ -15,6 +15,7 @@
 cmake_minimum_required(VERSION 3.12)
 
 include(CheckFunctionExists)
+include(CheckIncludeFiles)
 
 project(cu)
 
@@ -23,6 +24,14 @@ add_definitions(-D_GNU_SOURCE)
 check_function_exists(closefrom HAVE_CLOSEFROM)
 if(HAVE_CLOSEFROM)
 	add_definitions(-DHAVE_CLOSEFROM)
+endif()
+check_include_files("linux/close_range.h" HAVE_LINUX_CLOSE_RANGE_H)
+if(HAVE_LINUX_CLOSE_RANGE_H)
+	add_definitions(-DHAVE_LINUX_CLOSE_RANGE_H)
+endif()
+check_function_exists(close_range HAVE_CLOSE_RANGE)
+if(HAVE_CLOSE_RANGE)
+	add_definitions(-DHAVE_CLOSE_RANGE)
 endif()
 
 set(CFLAGS)
