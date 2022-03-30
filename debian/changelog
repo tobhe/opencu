@@ -1,5 +1,5 @@
 opencu (3-1) unstable; urgency=medium
 
-  * Initial release (Closes #1008683).
+  * Initial release (Closes: #1008683).
 
  -- Tobias Heider <me@tobhe.de>  Mon, 28 Mar 2022 16:37:03 +0200
